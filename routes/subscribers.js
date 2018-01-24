@@ -3,7 +3,7 @@ var router = express.Router();
 const {addSubscribers} = require('../repositories/subscribers');
 
 router.post('/', function(req, res) {
-    addSubscribers(JSON.parse(req.body).from_id);
+    addSubscribers(req.body.from_id);
     res.status(200).send('ok');
 });
 
