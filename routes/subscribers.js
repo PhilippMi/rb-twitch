@@ -8,4 +8,8 @@ router.post('/', function(req, res) {
     res.status(200).send('ok');
 });
 
+router.get('/', function(req, res) {
+    res.send(req.query['hub.challenge']);
+});
+
 module.exports = router;
