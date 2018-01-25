@@ -18,6 +18,15 @@ function showSubscribeBanner(containerEl, userName) {
     containerEl.appendChild(confettiContainer);
 }
 
+function showGoliveBanner(containerEl, userName) {
+    const banner = document.createElement('div');
+    banner.className = 'twitch-subscribe-banner';
+    banner.innerHTML = '<p class="twitch-subscribe-banner__text">' + userName +
+        ' just started streaming on Twitch. <a target="_blank" href="https://www.twitch.tv/redbull">Go watch it!</a></p>'
+    containerEl.appendChild(banner);
+    setTimeout(() => containerEl.removeChild(banner), 5000);
+}
+
 function throwConfetti(containerEl) {
     const colors = ['red', 'blue', 'lime', 'yellow', 'magenta', 'orange'];
     // containerEl.className = 'confetti-container';
@@ -76,6 +85,9 @@ module.exports = {
                 switch(data.event) {
                     case 'subscription':
                         showSubscribeBanner(bannerContainer, data.userName);
+                        break;
+                    case 'golive':
+                        showGoliveBanner(bannerContainer, data.userName);
                         break;
                 }
             };

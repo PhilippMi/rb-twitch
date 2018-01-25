@@ -1,4 +1,5 @@
 const request = require('request-promise');
+const {sendToClients} = require('../websocket');
 
 const streams = [];
 
@@ -11,8 +12,9 @@ function addStream(userId, title) {
     }).then((response) => {
         let data = JSON.parse(response).data;
         const s = data.map(user => ({title, userName: user['display_name']}));
-        console.log('stream', s);
+        console.log('new stream', s);
         Array.prototype.push.apply(streams, s);
+        sendToClients({event: 'golive', userName: s[0].userName});
     });
 }
 
