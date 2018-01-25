@@ -10,9 +10,9 @@ function showSubscribeBanner(containerEl, userName, subscriptionCount) {
     banner.className = 'twitch-subscribe-banner';
     banner.innerHTML = '<p class="twitch-subscribe-banner__text">' + userName +
         ' now follows our Twitch channel like ' + subscriptionCount +
-        ' already do. <a target="_blank" href="https://www.twitch.tv/redbull">Be one of them!</a></p>'
+        ' others already do. <a target="_blank" href="https://www.twitch.tv/redbull">Be one of them!</a></p>'
     containerEl.appendChild(banner);
-    setTimeout(() => containerEl.removeChild(banner), 5000);
+    setTimeout(() => containerEl.removeChild(banner), 10000);
 
     const confettiContainer = document.createElement('div');
     throwConfetti(confettiContainer);
