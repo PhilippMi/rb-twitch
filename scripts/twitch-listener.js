@@ -1,8 +1,7 @@
 function showStreamLiveBanner(containerEl, channel) {
     const banner = document.createElement('div');
-    banner.className = 'twitch-stream-live-banner';
-    banner.innerHTML = '<p class="twitch-stream-live-banner__text">' + channel +
-        ' is live on Twitch! <a target="_blank" href="https://www.twitch.tv/redbull">Click here to watch!</a></p>'
+    banner.className = 'teaser-text__summary';
+    banner.innerHTML = '<div class="teaser-text"><div class="teaser-text__wrapper"><div class="teaser-text__content-container"><div class="teaser-text__expanded"><div class="teaser-text__summary">channel + \' is live on Twitch! <a target="_blank" href="https://www.twitch.tv/redbull">Click here to watch!</a></div></div></div></div></div>';
     containerEl.appendChild(banner);
 }
 
