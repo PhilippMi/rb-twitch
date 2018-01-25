@@ -2,9 +2,10 @@
 function showSubscribeBanner(containerEl, userName) {
     const banner = document.createElement('div');
     banner.className = 'twitch-subscribe-banner';
-    banner.innerHTML = '<p class="twitch-subscribe-banner_text">User ' + userName +
-        ' just subscribed for our Twitch Channel. <a href="https://www.twitch.tv/redbull">Join too!</a></p>'
+    banner.innerHTML = '<p class="twitch-subscribe-banner__text">' + userName +
+        ' just subscribed for our Twitch channel. <a href="https://www.twitch.tv/redbull">Join too!</a></p>'
     containerEl.appendChild(banner);
+    setTimeout(() => containerEl.removeChild(banner), 5000);
 
     const confettiContainer = document.createElement('div');
     throwConfetti(confettiContainer);
