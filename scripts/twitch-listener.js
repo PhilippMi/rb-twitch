@@ -53,7 +53,7 @@ function throwConfetti(containerEl) {
 
 module.exports = {
     start: ({el}) => {
-        const subscribeSocket = new WebSocket('ws://rb-twitch.herokuapp.com:40510');
+        const subscribeSocket = new WebSocket('wss://rb-twitch.herokuapp.com:40510');
 
         subscribeSocket.onmessage = event => console.log(event.data);
 
@@ -73,7 +73,6 @@ module.exports = {
             showSubscribeBanner(bannerContainer, 'Wall-E');
 
             el.appendChild(bannerContainer);
-            el.appendChild(wrapper);
 
             return {
                 stop()  {
