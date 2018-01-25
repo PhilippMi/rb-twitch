@@ -1,3 +1,15 @@
+function showStreamLiveBanner(containerEl, channel) {
+    const banner = document.createElement('div');
+    banner.className = 'twitch-stream-live-banner';
+    banner.innerHTML = '<p class="twitch-stream-live-banner__text">' + channel +
+        ' is live on Twitch! <a target="_blank" href="https://www.twitch.tv/redbull">Click here to watch!</a></p>'
+    containerEl.appendChild(banner);
+    setTimeout(() => containerEl.removeChild(banner), 5000);
+
+    const confettiContainer = document.createElement('div');
+    throwConfetti(confettiContainer);
+    containerEl.appendChild(confettiContainer);
+}
 
 function showSubscribeBanner(containerEl, userName) {
     const banner = document.createElement('div');
@@ -44,21 +56,15 @@ module.exports = {
         return fetch("https://rb-twitch.herokuapp.com/twitch/stream").then(response => {
             const wrapper = document.createElement('div');
             console.log(response)
-            if (response.data[0].type === 'live') {
-                wrapper.setAttribute('class', 'test');
-                const div = document.createElement('div');
-                response.text().then(data => div.innerHTML = data);
-                const link = document.createElement('a');
-                link.setAttribute.href = 'https://twitch.tv/redbullesports';
-                link.innerHTML = "link";
-                wrapper.appendChild(div);
-
-            }
 
             el.appendChild(wrapper);
 
+            const streamLiveBannerContainer = document.createElement('div');
+            showStreamLiveBanner(streamLiveBannerContainer, 'redbull');
+
             const bannerContainer = document.createElement('div');
             showSubscribeBanner(bannerContainer, 'Wall-E');
+
             el.appendChild(bannerContainer);
             el.appendChild(wrapper);
 
