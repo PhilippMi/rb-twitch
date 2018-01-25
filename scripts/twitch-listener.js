@@ -13,9 +13,9 @@ function showSubscribeBanner(containerEl, userName) {
     containerEl.appendChild(banner);
     setTimeout(() => containerEl.removeChild(banner), 5000);
 
-    const confettiContainer = document.createElement('div');
-    throwConfetti(confettiContainer);
-    containerEl.appendChild(confettiContainer);
+    // const confettiContainer = document.createElement('div');
+    // throwConfetti(confettiContainer);
+    // containerEl.appendChild(confettiContainer);
 }
 
 function showGoliveBanner(containerEl, userName) {
