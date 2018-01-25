@@ -4,7 +4,7 @@ const {getStream} = require('../repositories/stream');
 
 router.post('/', function(req, res) {
     let stream = req.body.data;
-    getStream(stream.user_id);
+    getStream(44426109);
     res.status(200).send('ok');
 });
 
