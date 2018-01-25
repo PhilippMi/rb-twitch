@@ -47,7 +47,8 @@ function throwConfetti(containerEl) {
 
 module.exports = {
     start: ({el}) => {
-        const subscribeSocket = new WebSocket('wss://rb-twitch.herokuapp.com:40510');
+        const subscribeSocket = new WebSocket('wss://rb-twitch.herokuapp.com');
+        // const subscribeSocket = new WebSocket('ws://localhost:3000');
 
         subscribeSocket.onmessage = event => console.log(event.data);
 

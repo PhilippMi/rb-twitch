@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var stylus = require('stylus');
-const WebSocket = require('ws');
 
 var index = require('./routes/index');
 const subscribers = require('./routes/subscribers');
@@ -61,12 +60,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const wss = new WebSocket.Server({port: 40510});
-
-wss.on('connection', function connection(ws, req) {
-    console.log('ws connection');
-    setInterval(() => ws.send('something'), 5000);
-});
+// const http = require('http').Server(app);
+// const io = require('socket.io')(http);
+//
+// io.on('connection', function(socket){
+//     console.log('a user connected');
+//     setInterval(() => socket.send('something'), 5000);
+// });
 
 registerTwitchWebhooks();
 
