@@ -53,6 +53,10 @@ function throwConfetti(containerEl) {
 
 module.exports = {
     start: ({el}) => {
+        const subscribeSocket = new WebSocket('ws://rb-twitch.herokuapp.com:40510');
+
+        subscribeSocket.onmessage = event => console.log(event.data);
+
         return fetch("https://rb-twitch.herokuapp.com/twitch/stream").then(response => {
             const wrapper = document.createElement('div');
             response.json().then(data => {
@@ -71,7 +75,12 @@ module.exports = {
             el.appendChild(bannerContainer);
             el.appendChild(wrapper);
 
-            return {stop: () => el.removeChild(wrapper)};
+            return {
+                stop()  {
+                    el.removeChild(wrapper);
+                    subscribeSocket.close();
+                }
+            };
         })
 
     }
