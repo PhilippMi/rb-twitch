@@ -4,6 +4,7 @@ const {addStream} = require('../repositories/golive');
 
 router.post('/', function(req, res) {
     let stream = req.body.data[0];
+    console.log('golive rec', stream);
     addStream(stream.user_id, stream.title);
     res.status(200).send('ok');
 });

@@ -11,6 +11,7 @@ function addStream(userId, title) {
     }).then((response) => {
         let data = JSON.parse(response).data;
         const s = data.map(user => ({title, userName: user['display_name']}));
+        console.log('stream', s);
         Array.prototype.push.apply(streams, s);
     });
 }
