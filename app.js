@@ -9,6 +9,7 @@ var stylus = require('stylus');
 var index = require('./routes/index');
 var users = require('./routes/users');
 const subscribers = require('./routes/subscribers');
+const registerTwitchWebhooks = require('./startup/twitch-webhooks');
 
 var app = express();
 
@@ -48,5 +49,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+registerTwitchWebhooks();
 
 module.exports = app;
