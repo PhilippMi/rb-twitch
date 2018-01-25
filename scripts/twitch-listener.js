@@ -55,12 +55,15 @@ module.exports = {
     start: ({el}) => {
         return fetch("https://rb-twitch.herokuapp.com/twitch/stream").then(response => {
             const wrapper = document.createElement('div');
-            console.log(response)
+            response.json().then(data => {
+                if (data.length) {
+                    console.log("channel live", data)
+                    const streamLiveBannerContainer = document.createElement('div');
+                    showStreamLiveBanner(streamLiveBannerContainer, 'redbull');
+                }
+            });
 
             el.appendChild(wrapper);
-
-            const streamLiveBannerContainer = document.createElement('div');
-            showStreamLiveBanner(streamLiveBannerContainer, 'redbull');
 
             const bannerContainer = document.createElement('div');
             showSubscribeBanner(bannerContainer, 'Wall-E');
