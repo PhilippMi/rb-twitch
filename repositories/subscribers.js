@@ -10,12 +10,9 @@ function addSubscribers(userId) {
             'Client-ID': process.env.CLIENT_ID
         }
     }).then((response) => {
-        console.log('response', response);
         let data = JSON.parse(response).data;
-        console.log('data', data);
         const displayNames = data.map(user => user['display_name']);
-        console.log('displayNames', displayNames);
-        Array.prototype.push(subscribers, displayNames);
+        Array.prototype.push.apply(subscribers, displayNames);
     });
 }
 
