@@ -1,17 +1,26 @@
 const request = require('request-promise');
 
+const streams = [];
+
 function getStream(userId) {
     request({
-        uri: `https://api.twitch.tv/helix/streams?id=${userId}`,
+        uri: `https://api.twitch.tv/helix/streams/metadata?id=${userId}`,
         headers: {
-            'Client-ID': process.env.CLIENT_ID
+            'Client-ID': process.env.TWITCH_CLIENT_ID
         }
     }).then((response) => {
-        console.log("repo response", JSON.parse(response));
-        return JSON.parse(response).data;
+        let data = JSON.parse(response).data;
+        const s = data.map(user => ({title, userName: user['display_name']}));
+        console.log('stream', s);
+        Array.prototype.push.apply(streams, s);
     });
 }
 
+function getStreams() {
+    return streams;
+}
+
 module.exports = {
+    getStreams,
     getStream
 };

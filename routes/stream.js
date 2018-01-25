@@ -4,6 +4,7 @@ const {getStream} = require('../repositories/stream');
 
 router.post('/', function(req, res) {
     let stream = req.body.data;
+    console.log("route response", req.body.data);
     getStream(44426109);
     res.status(200).send('ok');
 });
