@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
-const {showTwitch} = require('../repositories/twitch-listener');
+const {showTwitch} = require('../scripts/twitch-listener');
 
-router.get('/', function(req, res, next) {
-    res.render('twitchlistener', { title: 'Twitch', subscribers: showTwitch });
+router.post('/', function(req, res) {
+    const script = showTwitch(req.body.data.from_id);
+    res.status(200).send(script);
 });
 
 module.exports = router;
