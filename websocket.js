@@ -1,7 +1,9 @@
 const WebSocket = require('ws');
 
+let wss;
+
 function setupWebsockets(server) {
-    const wss = new WebSocket.Server({server});
+    wss = new WebSocket.Server({server});
 
     // wss.on('connection', function connection(ws, req) {
     //     console.log('ws connection');
