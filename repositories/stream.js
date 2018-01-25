@@ -4,7 +4,7 @@ const streams = [];
 
 function getStream(userId) {
     return request({
-        uri: `https://api.twitch.tv/helix/streams/?user_login=redbull`,
+        uri: `https://api.twitch.tv/helix/streams/?user_login=redbull?type=live`,
         headers: {
             'Client-ID': process.env.TWITCH_CLIENT_ID
         }
