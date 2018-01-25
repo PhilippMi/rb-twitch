@@ -1,5 +1,5 @@
 const request = require('request-promise');
-
+const {sendToClients} = require('../websocket');
 
 const subscribers = [];
 
@@ -13,6 +13,7 @@ function addSubscribers(userId) {
         let data = JSON.parse(response).data;
         const displayNames = data.map(user => user['display_name']);
         Array.prototype.push.apply(subscribers, displayNames);
+        sendToClients({event: 'subscription', userName: displayNames[0]});
     });
 }
 

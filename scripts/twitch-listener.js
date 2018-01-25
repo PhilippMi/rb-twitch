@@ -47,11 +47,6 @@ function throwConfetti(containerEl) {
 
 module.exports = {
     start: ({el}) => {
-        const subscribeSocket = new WebSocket('wss://rb-twitch.herokuapp.com');
-        // const subscribeSocket = new WebSocket('ws://localhost:3000');
-
-        subscribeSocket.onmessage = event => console.log(event.data);
-
         return fetch("https://rb-twitch.herokuapp.com/twitch/stream").then(response => {
             const wrapper = document.createElement('div');
 
@@ -67,9 +62,20 @@ module.exports = {
             });
 
             const bannerContainer = document.createElement('div');
-            showSubscribeBanner(bannerContainer, 'Wall-E');
-
             el.appendChild(bannerContainer);
+
+            const subscribeSocket = new WebSocket('wss://rb-twitch.herokuapp.com');
+            // const subscribeSocket = new WebSocket('ws://localhost:3000');
+
+            subscribeSocket.onmessage = event => {
+                console.log('received ws event', event.data);
+                const data = JSON.parse(event.data);
+                switch(data.event) {
+                    case 'subscription':
+                        showSubscribeBanner(bannerContainer, data.userName);
+                        break;
+                }
+            };
 
             return {
                 stop()  {
