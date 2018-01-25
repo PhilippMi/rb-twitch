@@ -4,11 +4,6 @@ function showStreamLiveBanner(containerEl, channel) {
     banner.innerHTML = '<p class="twitch-stream-live-banner__text">' + channel +
         ' is live on Twitch! <a target="_blank" href="https://www.twitch.tv/redbull">Click here to watch!</a></p>'
     containerEl.appendChild(banner);
-    setTimeout(() => containerEl.removeChild(banner), 5000);
-
-    const confettiContainer = document.createElement('div');
-    throwConfetti(confettiContainer);
-    containerEl.appendChild(confettiContainer);
 }
 
 function showSubscribeBanner(containerEl, userName) {
@@ -60,6 +55,8 @@ module.exports = {
                     console.log("channel live", data)
                     const streamLiveBannerContainer = document.createElement('div');
                     showStreamLiveBanner(streamLiveBannerContainer, 'redbull');
+                    el.appendChild(streamLiveBannerContainer);
+
                 }
             });
 
