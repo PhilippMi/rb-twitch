@@ -5,4 +5,4 @@ const TwitchListener = {
     }
 };
 
-export default TwitchListener;
+module.exports = TwitchListener;

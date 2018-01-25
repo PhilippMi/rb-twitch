@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-const {addSubscribers} = require('../repositories/subscribers');
+const {getCustomScript} = require('../repositories/twitch-listener');
 
 router.post('/', function(req, res) {
-    addSubscribers(req.body.data.from_id);
+    getCustomScript(req.body);
     res.status(200).send('ok');
 });
 
