@@ -13,7 +13,7 @@ function setupWebsockets(server) {
 }
 
 function sendToClients(data) {
-    wss.clients.forEach(ws => ws.send(data));
+    wss.clients.forEach(ws => ws.send(JSON.stringify(data)));
 }
 
 module.exports = {
