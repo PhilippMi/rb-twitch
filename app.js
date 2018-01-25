@@ -5,7 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var stylus = require('stylus');
-const WebSocket = require('ws');
 
 var index = require('./routes/index');
 const subscribers = require('./routes/subscribers');
@@ -61,7 +60,18 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const wss = new WebSocket.Server({port: 40510});
+// const http = require('http').Server(app);
+
+const server = require('http').createServer(app);
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({server});
+
+// const io = require('socket.io')(http);
+
+// io.on('connection', function(socket){
+//     console.log('a user connected');
+//     setInterval(() => socket.send('something'), 5000);
+// });
 
 wss.on('connection', function connection(ws, req) {
     console.log('ws connection');
