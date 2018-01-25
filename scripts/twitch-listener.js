@@ -4,7 +4,7 @@ module.exports = {
             const responseData = response.json;
             const wrapper = document.createElement('div');
 
-            if (responseData.live) {
+            if (true) {
                 wrapper.setAttribute('class', 'test');
                 const div = document.createElement('div');
                 div.innerHTML = responseData;
