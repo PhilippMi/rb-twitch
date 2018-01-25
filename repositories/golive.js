@@ -1,9 +1,8 @@
 const request = require('request-promise');
 
+const streams = [];
 
-const subscribers = [];
-
-function addSubscribers(userId) {
+function addStream(userId, title) {
     request({
         uri: `https://api.twitch.tv/helix/users?id=${userId}`,
         headers: {
@@ -11,16 +10,16 @@ function addSubscribers(userId) {
         }
     }).then((response) => {
         let data = JSON.parse(response).data;
-        const displayNames = data.map(user => user['display_name']);
-        Array.prototype.push.apply(subscribers, displayNames);
+        const s = data.map(user => ({title, userName: user['display_name']}));
+        Array.prototype.push.apply(streams, s);
     });
 }
 
-function getSubscribers() {
-    return subscribers;
+function getStreams() {
+    return streams;
 }
 
 module.exports = {
-    getSubscribers,
-    addSubscribers
+    getStreams,
+    addStream
 };
