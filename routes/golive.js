@@ -3,8 +3,10 @@ var router = express.Router();
 const {addStream} = require('../repositories/golive');
 
 router.post('/', function(req, res) {
-    let stream = req.body.data;
-    console.log('golive rec', req.body);
+    let stream = req.body.data[0];
+    console.log('golive body', req.body);
+    console.log('golive data', req.body.data);
+    console.log('golive data 1st', req.body.data[0]);
     addStream(stream.user_id, stream.title);
     res.status(200).send('ok');
 });
