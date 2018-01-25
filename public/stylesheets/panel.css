@@ -196,11 +196,11 @@
   }
   80% {
     opacity: 1;
-    transform: translateY(400px);
+    transform: translateY(72wh);
   }
   100% {
     opacity: 0;
-    transform: translateY(500px);
+    transform: translateY(90vh);
   }
 }
 @-webkit-keyframes drop {
@@ -210,11 +210,11 @@
   }
   80% {
     opacity: 1;
-    transform: translateY(400px);
+    transform: translateY(72wh);
   }
   100% {
     opacity: 0;
-    transform: translateY(500px);
+    transform: translateY(90vh);
   }
 }
 @-o-keyframes drop {
@@ -224,11 +224,11 @@
   }
   80% {
     opacity: 1;
-    transform: translateY(400px);
+    transform: translateY(72wh);
   }
   100% {
     opacity: 0;
-    transform: translateY(500px);
+    transform: translateY(90vh);
   }
 }
 @keyframes drop {
@@ -238,10 +238,10 @@
   }
   80% {
     opacity: 1;
-    transform: translateY(400px);
+    transform: translateY(72wh);
   }
   100% {
     opacity: 0;
-    transform: translateY(500px);
+    transform: translateY(90vh);
   }
 }
