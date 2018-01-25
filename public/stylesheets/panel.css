@@ -1,3 +1,21 @@
+.twitch-subscribe-banner {
+  position: fixed;
+  bottom: 100vh;
+  left: 30px;
+  width: calc(100vw - 60px);
+  background-color: #001e3c;
+  border: 3px solid #001e3c;
+  border-radius: 3px;
+  animation: swoosh 0.5s forwards;
+}
+.twitch-subscribe-banner__text {
+  font-size: 16px;
+  margin: 20px;
+  color: #fff;
+}
+.twitch-subscribe-banner__text a {
+  color: #db0a40;
+}
 .confetti-container {
   opcaity: 0;
   animation: fade 3s linear;
@@ -8,6 +26,38 @@
 }
 .confetti-wrapper {
   position: fixed;
+}
+@-moz-keyframes swoosh {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(100% + 30px));
+  }
+}
+@-webkit-keyframes swoosh {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(100% + 30px));
+  }
+}
+@-o-keyframes swoosh {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(100% + 30px));
+  }
+}
+@keyframes swoosh {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(100% + 30px));
+  }
 }
 @-moz-keyframes fade {
   0% {
