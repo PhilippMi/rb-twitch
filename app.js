@@ -61,22 +61,12 @@ app.use(function(err, req, res, next) {
 });
 
 // const http = require('http').Server(app);
-
-const server = require('http').createServer(app);
-const WebSocket = require('ws');
-const wss = new WebSocket.Server({server});
-
 // const io = require('socket.io')(http);
-
+//
 // io.on('connection', function(socket){
 //     console.log('a user connected');
 //     setInterval(() => socket.send('something'), 5000);
 // });
-
-wss.on('connection', function connection(ws, req) {
-    console.log('ws connection');
-    setInterval(() => ws.send('something'), 5000);
-});
 
 registerTwitchWebhooks();
 
