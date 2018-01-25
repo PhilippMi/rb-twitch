@@ -34,7 +34,8 @@ app.use(function(req, res, next) {
 
 app.use(stylus.middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'scripts')));
+app.use('/scripts', express.static(path.join(__dirname, 'scripts')));
+app.use('/repositories', express.static(path.join(__dirname, 'repositories')));
 
 app.use('/', index);
 app.use('/users', users);
