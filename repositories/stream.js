@@ -7,6 +7,7 @@ function getStream(userId) {
             'Client-ID': process.env.CLIENT_ID
         }
     }).then((response) => {
+        console.log("repo response", JSON.parse(response));
         return JSON.parse(response).data;
     });
 }
