@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var stylus = require('stylus');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 const subscribers = require('./routes/subscribers');
 const golive = require('./routes/golive');
 const stream = require('./routes/stream');
@@ -38,7 +37,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/scripts', express.static(path.join(__dirname, 'scripts')));
 
 app.use('/', index);
-app.use('/users', users);
 
 app.use('/twitch/subscribers', subscribers);
 app.use('/twitch/golive', golive);

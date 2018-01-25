@@ -1,5 +1,11 @@
 extends layout
 
+block head
+  link(rel='stylesheet', href='/stylesheets/panel.css')
+  script.
+    window.module = {};
+  script(src='/scripts/twitch-listener.js')
+
 block content
   h1= title
   p Welcome to #{title}
@@ -11,3 +17,8 @@ block content
   ol
     for stream in live
       li= typeof stream === 'string' ? stream : JSON.stringify(stream)
+  div#panel
+  script.
+    const el = document.getElementById('panel');
+    window.module.exports.start({el});
+
