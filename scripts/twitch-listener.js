@@ -48,27 +48,35 @@ function throwConfetti(containerEl) {
 
 module.exports = {
     start: ({el}) => {
+        const subscribeSocket = new WebSocket('wss://rb-twitch.herokuapp.com:40510');
+
+        subscribeSocket.onmessage = event => console.log(event.data);
+
         return fetch("https://rb-twitch.herokuapp.com/twitch/stream").then(response => {
             const wrapper = document.createElement('div');
+
+            el.appendChild(wrapper);
+
             response.json().then(data => {
                 if (data.length) {
-                    console.log("channel live", data)
+                    console.log(data)
                     const streamLiveBannerContainer = document.createElement('div');
                     showStreamLiveBanner(streamLiveBannerContainer, 'redbull');
                     el.appendChild(streamLiveBannerContainer);
-
                 }
             });
-
-            el.appendChild(wrapper);
 
             const bannerContainer = document.createElement('div');
             showSubscribeBanner(bannerContainer, 'Wall-E');
 
             el.appendChild(bannerContainer);
-            el.appendChild(wrapper);
 
-            return {stop: () => el.removeChild(wrapper)};
+            return {
+                stop()  {
+                    el.removeChild(wrapper);
+                    subscribeSocket.close();
+                }
+            };
         })
 
     }
