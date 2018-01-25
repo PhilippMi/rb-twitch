@@ -4,17 +4,32 @@ const {sendToClients} = require('../websocket');
 const subscribers = [];
 
 function addSubscribers(userId) {
-    request({
+    const userInfoRequest = request({
         uri: `https://api.twitch.tv/helix/users?id=${userId}`,
         headers: {
             'Client-ID': process.env.TWITCH_CLIENT_ID
-        }
-    }).then((response) => {
-        let data = JSON.parse(response).data;
-        const displayNames = data.map(user => user['display_name']);
-        Array.prototype.push.apply(subscribers, displayNames);
-        sendToClients({event: 'subscription', userName: displayNames[0]});
+        },
+        json: true
     });
+    const subscriptionCountRequest = request({
+        uri: `https://api.twitch.tv/helix/users/follows?to_id=141173718`,
+        headers: {
+            'Client-ID': process.env.TWITCH_CLIENT_ID
+        },
+        json: true
+    });
+
+    Promise.all([userInfoRequest, subscriptionCountRequest])
+        .then(([userInfoResponse, subscriptionInfoResponse]) => {
+            let userData = userInfoResponse.data;
+            const displayName = userData[0].display_name;
+            subscribers.push(displayName);
+            sendToClients({
+                event: 'subscription',
+                userName: displayName,
+                subscriptionCount: subscriptionInfoResponse.total
+            });
+        });
 }
 
 function getSubscribers() {

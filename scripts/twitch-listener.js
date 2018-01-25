@@ -5,17 +5,18 @@ function showStreamLiveBanner(containerEl, channel) {
     containerEl.appendChild(banner);
 }
 
-function showSubscribeBanner(containerEl, userName) {
+function showSubscribeBanner(containerEl, userName, subscriptionCount) {
     const banner = document.createElement('div');
     banner.className = 'twitch-subscribe-banner';
     banner.innerHTML = '<p class="twitch-subscribe-banner__text">' + userName +
-        ' now follows our Twitch channel. <a target="_blank" href="https://www.twitch.tv/redbull">Join too!</a></p>'
+        ' now follows our Twitch channel like ' + subscriptionCount +
+        ' already do. <a target="_blank" href="https://www.twitch.tv/redbull">Be one of them!</a></p>'
     containerEl.appendChild(banner);
     setTimeout(() => containerEl.removeChild(banner), 5000);
 
-    // const confettiContainer = document.createElement('div');
-    // throwConfetti(confettiContainer);
-    // containerEl.appendChild(confettiContainer);
+    const confettiContainer = document.createElement('div');
+    throwConfetti(confettiContainer);
+    containerEl.appendChild(confettiContainer);
 }
 
 function showGoliveBanner(containerEl, userName) {
@@ -84,7 +85,7 @@ module.exports = {
                 const data = JSON.parse(event.data);
                 switch(data.event) {
                     case 'subscription':
-                        showSubscribeBanner(bannerContainer, data.userName);
+                        showSubscribeBanner(bannerContainer, data.userName, data.subscriptionCount);
                         break;
                     case 'golive':
                         showGoliveBanner(bannerContainer, data.userName);
