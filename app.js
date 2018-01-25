@@ -10,6 +10,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 const subscribers = require('./routes/subscribers');
 const golive = require('./routes/golive');
+const stream = require('./routes/stream');
 
 const registerTwitchWebhooks = require('./startup/twitch-webhooks');
 
@@ -35,13 +36,13 @@ app.use(function(req, res, next) {
 app.use(stylus.middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/scripts', express.static(path.join(__dirname, 'scripts')));
-app.use('/repositories', express.static(path.join(__dirname, 'repositories')));
 
 app.use('/', index);
 app.use('/users', users);
 
 app.use('/twitch/subscribers', subscribers);
 app.use('/twitch/golive', golive);
+app.use('/twitch/stream', stream);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
