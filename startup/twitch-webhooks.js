@@ -17,8 +17,8 @@ function registerForTopic(topic, callback) {
         method: 'POST',
         uri: 'https://api.twitch.tv/helix/webhooks/hub' +
         '?hub.mode=subscribe' +
-        '&hub.topic=https://api.twitch.tv/helix' + topic
-        '&hub.callback=https://rb-twitch.herokuapp.com' + callback
+        '&hub.topic=https://api.twitch.tv/helix' + topic +
+        '&hub.callback=https://rb-twitch.herokuapp.com' + callback +
         '&hub.lease_seconds=86400' +
         '&hub.secret=' + process.env.TWITCH_SECRET,
         headers: {
