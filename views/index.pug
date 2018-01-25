@@ -3,6 +3,11 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  h2 Subscribers
   ol
     for subscriber in subscribers
       li= typeof subscriber === 'string' ? subscriber : JSON.stringify(subscriber)
+  h2 Streams
+  ol
+    for stream in streams
+      li= typeof stream === 'string' ? stream : JSON.stringify(stream)
