@@ -1,6 +1,6 @@
 function showStreamLiveBanner(containerEl, channel) {
     const banner = document.createElement('div');
-    banner.className = 'teaser-text teaser_text--image';
+    banner.className = 'teaser-text teaser-text--image';
     banner.innerHTML = '<div class="teaser-text__wrapper"><div class="teaser-text__content-container"><div class="teaser-text__expanded"><div class="teaser-text__summary">Red Bull is live on Twitch! <a target="_blank" href="https://www.twitch.tv/redbull"> Click here to watch!</a></div></div></div></div>';
     containerEl.appendChild(banner);
 }
@@ -47,6 +47,10 @@ function throwConfetti(containerEl) {
 
 module.exports = {
     start: ({el, config}) => {
+        const styleLink = document.createElement('link');
+        styleLink.rel ='stylesheet';
+        styleLink.href = 'https://rb-twitch.herokuapp.com/stylesheets/panel.css';
+        document.head.appendChild(styleLink);
         return fetch("https://rb-twitch.herokuapp.com/twitch/stream").then(response => {
             const wrapper = document.createElement('div');
 

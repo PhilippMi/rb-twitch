@@ -1,10 +1,11 @@
 .twitch-subscribe-banner
   position: fixed;
+  z-index: 5000;
   bottom: 100vh;
   left: 30px;
   width: calc(100vw - 60px);
   background-color: #001e3c;
-  border: 3px solid #001e3c;
+  border: 3px solid white;
   border-radius: 3px;
   animation: swoosh 0.5s forwards;
 
@@ -36,6 +37,7 @@
 
 .confetti-wrapper {
   position: fixed;
+  z-index: 7000;
 }
 
 @keyframes fade {
@@ -89,3 +91,7 @@
     transform: translateY(500px);
   }
 }
+
+.teaser-text--image
+  background-image url('https://image.redbull.com/rbcom/010/2013-11-24/P-20131125-00123/0010/1/1500/1000/1/red-bull-battle-grounds-at-the-hammerstein.jpg')
+
