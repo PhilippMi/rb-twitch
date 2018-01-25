@@ -47,6 +47,10 @@ function throwConfetti(containerEl) {
 
 module.exports = {
     start: ({el, config}) => {
+        const styleLink = document.createElement('link');
+        styleLink.rel ='stylesheet';
+        styleLink.href = 'https://rb-twitch.herokuapp.com/stylesheets/panel.css';
+        document.head.appendChild(styleLink);
         return fetch("https://rb-twitch.herokuapp.com/twitch/stream").then(response => {
             const wrapper = document.createElement('div');
 
