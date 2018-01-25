@@ -9,7 +9,6 @@ var stylus = require('stylus');
 var index = require('./routes/index');
 var users = require('./routes/users');
 const subscribers = require('./routes/subscribers');
-const twitchListener = require('./routes/twitch-listener');
 
 var app = express();
 
