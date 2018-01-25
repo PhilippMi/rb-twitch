@@ -1,7 +1,7 @@
 function showStreamLiveBanner(containerEl, channel) {
     const banner = document.createElement('div');
     banner.className = 'teaser-text teaser-text--image dark-theme';
-    banner.innerHTML = '<div class="teaser-text__wrapper"><div class="teaser-text__content-container"><div class="teaser-text__expanded"><div class="teaser-text__summary">Red Bull is live on Twitch! <a target="_blank" href="https://www.twitch.tv/redbull"> Click here to watch!</a><img class="twitch-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Twitch_logo.svg/1280px-Twitch_logo.svg.png"></div></div></div></img>';
+    banner.innerHTML = '<div class="teaser-text__wrapper"><div class="teaser-text__content-container"><div class="teaser-text__expanded"><div class="teaser-text__summary">Red Bull is live on Twitch! <a target="_blank" href="https://www.twitch.tv/redbull"> Click here to watch!</a></div></div></div></img>';
     containerEl.appendChild(banner);
 }
 
@@ -16,6 +16,15 @@ function showSubscribeBanner(containerEl, userName) {
     const confettiContainer = document.createElement('div');
     throwConfetti(confettiContainer);
     containerEl.appendChild(confettiContainer);
+}
+
+function showGoliveBanner(containerEl, userName) {
+    const banner = document.createElement('div');
+    banner.className = 'twitch-subscribe-banner';
+    banner.innerHTML = '<p class="twitch-subscribe-banner__text">' + userName +
+        ' just started streaming on Twitch. <a target="_blank" href="https://www.twitch.tv/redbull">Go watch it!</a></p>'
+    containerEl.appendChild(banner);
+    setTimeout(() => containerEl.removeChild(banner), 5000);
 }
 
 function throwConfetti(containerEl) {
@@ -76,6 +85,9 @@ module.exports = {
                 switch(data.event) {
                     case 'subscription':
                         showSubscribeBanner(bannerContainer, data.userName);
+                        break;
+                    case 'golive':
+                        showGoliveBanner(bannerContainer, data.userName);
                         break;
                 }
             };
