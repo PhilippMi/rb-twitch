@@ -10,8 +10,8 @@ function getStream(userId) {
         }
     }).then((response) => {
         let data = JSON.parse(response).data;
+        console.log('stream', data);
         const s = data.map(user => ({title, userName: user['display_name']}));
-        console.log('stream', s);
         Array.prototype.push.apply(streams, s);
     });
 }
