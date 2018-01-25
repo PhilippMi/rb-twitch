@@ -5,9 +5,8 @@ const subscribers = [];
 
 function addSubscribers(userId) {
     request({
-        uri: `https://api.twitch.tv/kraken/users/${userId}`,
+        uri: `https://api.twitch.tv/helix/users?id=${userId}`,
         headers: {
-            Accept: 'application/vnd.twitchtv.v5+json',
             'Client-ID': process.env.CLIENT_ID
         }
     }).then((response) => {
