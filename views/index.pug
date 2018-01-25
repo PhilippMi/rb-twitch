@@ -9,5 +9,5 @@ block content
       li= typeof subscriber === 'string' ? subscriber : JSON.stringify(subscriber)
   h2 Streams
   ol
-    for stream in streams
+    for stream in live
       li= typeof stream === 'string' ? stream : JSON.stringify(stream)
