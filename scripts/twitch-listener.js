@@ -3,7 +3,7 @@ function showSubscribeBanner(containerEl, userName) {
     const banner = document.createElement('div');
     banner.className = 'twitch-subscribe-banner';
     banner.innerHTML = '<p class="twitch-subscribe-banner__text">' + userName +
-        ' now follows our Twitch channel. <a href="https://www.twitch.tv/redbull">Join too!</a></p>'
+        ' now follows our Twitch channel. <a target="_blank" href="https://www.twitch.tv/redbull">Join too!</a></p>'
     containerEl.appendChild(banner);
     setTimeout(() => containerEl.removeChild(banner), 5000);
 
