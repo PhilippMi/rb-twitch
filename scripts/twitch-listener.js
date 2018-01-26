@@ -1,7 +1,7 @@
 function showStreamLiveBanner(containerEl, channel) {
     const banner = document.createElement('div');
     banner.className = 'teaser-text teaser-text--image dark-theme';
-    banner.innerHTML = '<div class="teaser-text__wrapper"><div class="teaser-text__content-container"><div class="teaser-text__expanded"><div class="teaser-text__summary">Red Bull is live on Twitch! <a target="_blank" href="https://www.twitch.tv/redbull"> Click here to watch!</a></div></div></div></img>';
+    banner.innerHTML = '<div class="teaser-text__wrapper"><div class="teaser-text__content-container"><div class="teaser-text__expanded"><div class="teaser-text__summary">Red Bull eSports is live on Twitch! <a target="_blank" href="https://www.twitch.tv/redbull"> Check out whats going on! </a></div></div></div></img>';
     containerEl.appendChild(banner);
 }
 
