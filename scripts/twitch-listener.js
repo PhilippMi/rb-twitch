@@ -43,7 +43,7 @@ function throwConfetti(containerEl) {
         wrapper.style.top = -(Math.random() * 100 + 10) + 'px';
         wrapper.style.left = (Math.random() * 100) + 'vw';
         wrapper.appendChild(confetti);
-        wrapper.style.animation = `drop ${3 + 0.6 * Math.random()}s linear`;
+        wrapper.style.animation = `drop ${3 + 0.6 * Math.random()}s linear forwards`;
         const timeout = i + (Math.pow(i,5)/Math.pow(10,8.2));
         setTimeout(() => containerEl.appendChild(wrapper), timeout);
     }
